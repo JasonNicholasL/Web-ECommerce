@@ -53,7 +53,7 @@
   </div>
 
   <script>
-      let num1, num2, correctAnswer;
+      let num1, num2, num3, correctAnswer;
 
       function generateQuestion() {
           num1 = Math.floor(Math.random() * 50) + 1; // A
@@ -73,7 +73,7 @@
           }
       }
 
-      function checkAnswer() {
+      function checkAnswer() { // Check jawaban
           const userAnswer = parseInt(document.getElementById("answer").value);
           const resultDiv = document.getElementById("result");
 
@@ -84,22 +84,18 @@
               resultDiv.textContent = `Wrong! The correct answer was ${correctAnswer}.`;
               resultDiv.style.color = "red";
           }
-
-          // Generate a new question after a brief moment
-          setTimeout(() => {
+          setTimeout(() => { // Delay tiap question
               generateQuestion();
               document.getElementById("answer").value = '';
               resultDiv.textContent = '';
           }, 2000);
       }
-
-      // Generate the first question when the page loads
       generateQuestion();
 
-      document.getElementById("answer").addEventListener("keydown", function(event) {
+      document.getElementById("answer").addEventListener("keydown", function(event) { // Pengecek enter
           if (event.key === "Enter") {
-              event.preventDefault(); // Prevent the default form submission (if any)
-              checkAnswer(); // Trigger the checkAnswer function when Enter is pressed
+              event.preventDefault();
+              checkAnswer();
           }
       });
   </script>
