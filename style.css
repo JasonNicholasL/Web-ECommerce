@@ -128,3 +128,18 @@ a.link:hover{
 .product-btn{
     width: 150px;
 }
+.product-catalog{
+    margin-bottom: 73px;
+}
+@media screen and (max-width: 800px){
+    .product-catalog{
+        display: flex;
+        flex-direction: column;
+    }
+    .product-text{
+        margin: auto;
+    }
+    footer{
+        position: static;
+    }
+}
