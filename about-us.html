@@ -24,13 +24,85 @@
             </div>
         </nav>
     </header>
-
+    <div class="news d-flex">
+      <div class="news-icon h-10 bg-danger align-middle">
+        <p class="h-10 mb-0 ms-2 me-2 text-light fw-bold">NEWS</p>
+      </div>
+      <div class="news-ticker w-100 h-10 bg-light">
+        <marquee behavior="infinite" direction="left" class="text-dark ms-3 me-3">
+          You can find the newest item on our Instagram. |
+          A Bangboo is on the loose! Please notify the nearest officer when you spot them. |
+          Despite being called South Africa, there is no such country with the name North Africa. |
+          There was a bear enlisted in the polish army who made it to the rank of Corporal. He also smoked, drank and carried weapons to the front during battles. His name was Wojtek. |
+        </marquee>
+      </div>
+    </div>
     <div class="about-us text-center mt-5 container d-flex">
       <h3 class="mb-3">About Us</h3>
       <p>DE4ATHCUB is a little merch store own by 4kuma.</p>
       <p>All of the items are drawn by 4kuma.</p>
       <img src="img/4kuma.webp" alt="4kuma" class="mb-5">
     </div>
+    
+    <div class="game-container">
+      <h1>Simple Math Game</h1>
+      <p id="question"></p>
+      <input type="number" id="answer" placeholder="Your answer">
+      <button onclick="checkAnswer()">Submit</button>
+      <div class="result" id="result"></div>
+  </div>
+
+  <script>
+      let num1, num2, correctAnswer;
+
+      function generateQuestion() {
+          num1 = Math.floor(Math.random() * 50) + 1; // A
+          num2 = Math.floor(Math.random() * 50) + 1; // B
+          num3 = Math.floor(Math.random() * 3) + 1; // +,-,*
+          if(num3 == 1){
+            correctAnswer = num1 + num2;
+            document.getElementById("question").textContent = `What is ${num1} + ${num2}?`;
+          }
+          else if(num3 == 2){
+            correctAnswer = num1 - num2;
+            document.getElementById("question").textContent = `What is ${num1} - ${num2}?`;
+          }
+          else if(num3 == 3){
+            correctAnswer = num1 * num2;
+            document.getElementById("question").textContent = `What is ${num1} * ${num2}?`;
+          }
+      }
+
+      function checkAnswer() {
+          const userAnswer = parseInt(document.getElementById("answer").value);
+          const resultDiv = document.getElementById("result");
+
+          if (userAnswer === correctAnswer) {
+              resultDiv.textContent = "Correct! Well done!";
+              resultDiv.style.color = "green";
+          } else {
+              resultDiv.textContent = `Wrong! The correct answer was ${correctAnswer}.`;
+              resultDiv.style.color = "red";
+          }
+
+          // Generate a new question after a brief moment
+          setTimeout(() => {
+              generateQuestion();
+              document.getElementById("answer").value = '';
+              resultDiv.textContent = '';
+          }, 2000);
+      }
+
+      // Generate the first question when the page loads
+      generateQuestion();
+
+      document.getElementById("answer").addEventListener("keydown", function(event) {
+          if (event.key === "Enter") {
+              event.preventDefault(); // Prevent the default form submission (if any)
+              checkAnswer(); // Trigger the checkAnswer function when Enter is pressed
+          }
+      });
+  </script>
 
     <footer class="container-fluid bg-dark text-white text-center py-1">
         <div class="row align-items-start mt-2">
