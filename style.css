@@ -110,8 +110,8 @@ a.link:hover{
     }
 }
 .product > img{
-    height: 400px;
-    width: 400px;
+    height: 300px;
+    width: 300px;
     border-radius: 20px;
 }
 .product{
@@ -129,7 +129,7 @@ a.link:hover{
     width: 150px;
 }
 .product-catalog{
-    margin-bottom: 73px;
+    margin-bottom: 173px;
 }
 @media screen and (max-width: 800px){
     .product-catalog{
